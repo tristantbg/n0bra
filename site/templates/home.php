@@ -24,6 +24,7 @@
 		</div>
 	</section>
 	<section id="overview">
+		<div id="overview-slider">
 		<?php foreach ($page->gallery()->toStructure() as $key => $image): ?>
 		<?php $image = $image->toFile();
 			  $srcset = '';
@@ -43,6 +44,7 @@
 			</noscript>
 		</div>
 		<?php endforeach ?>
+		</div>
 	</section>
 </div>
 

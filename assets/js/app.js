@@ -64,6 +64,7 @@ $(function() {
                     }
                     $contact.removeClass('visible');
                 });
+
                 app.fullPager();
                 $(window).load(function() {
                     $(".loader").fadeOut("fast");
@@ -123,7 +124,7 @@ $(function() {
                 responsiveSlides: false,
                 //Custom selectors
                 sectionSelector: 'section',
-                slideSelector: '.slide',
+                slideSelector: 'none',
                 lazyLoading: false,
                 //events
                 onLeave: function(index, nextIndex, direction) {
@@ -146,7 +147,41 @@ $(function() {
                 // },
                 // onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex) {}
             });
+            app.loadSlider();
 
+        },
+
+        loadSlider: function() {
+            $slider = $('#overview-slider').flickity({
+                cellSelector: '.slide',
+                imagesLoaded: false,
+                lazyLoad: false,
+                setGallerySize: true,
+                autoPlay: 3000,
+                pauseAutoPlayOnHover: false,
+                accessibility: true,
+                wrapAround: true,
+                prevNextButtons: false,
+                pageDots: false,
+                draggable: true
+            });
+            flkty = $slider.data('flickity');
+            $slider.on('staticClick.flickity', function(event, pointer, cellElement, cellIndex) {
+                if (!cellElement) {
+                    return;
+                }
+                app.goNext($slider);
+            });
+        },
+        goNext: function($slider) {
+            if ($slider) {
+                $slider.flickity('next', false);
+            }
+        },
+        goPrev: function($slider) {
+            if ($slider) {
+                $slider.flickity('previous', false);
+            }
         },
         loadContent: function(url, target) {
             $.ajax({
