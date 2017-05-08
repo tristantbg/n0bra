@@ -369,33 +369,52 @@ header
 				transform(rotateZ(0deg) rotateY(180deg))
 
 #overview
-	.fp-controlArrow
-		top 0
+	#overview-slider
+		span(1)
+		display block
 		height 100%
-		width 50%
-		margin-top 0
-		border none
-	.fp-controlArrow.fp-prev
-		cursor w-resize
-		left 0
-	.fp-controlArrow.fp-next
-		cursor e-resize
-		right 0
-	.fp-slidesContainer
-		width 100% !important
-		transform(none !important)
-	.slide
-		width 100% !important
-		img
-			position absolute
+		.flickity-viewport
+			cursor default
+		.flickity-slider
+			transform none !important
+		.slide
+			display block
+			height 100%
+			width 100%
+			left 0 !important
+			opacity 1
+			z-index 1
+			img
+				position absolute
+				top 0
+				height 100%
+				width auto
+			img.left
+				left 0
+			img.center
+				align(horizontal)
+			img.right
+				right 0
+		.slide.is-selected ~ .slide
+			opacity 0
+			z-index 0
+		.flickity-prev-next-button
 			top 0
 			height 100%
-			width auto
-		img.left
+			width 50%
+			margin-top 0
+			background transparent
+			padding 0
+			transform(none)
+			border none
+			z-index 10
+			+below($md)
+				display none
+			svg
+				display none
+		.flickity-prev-next-button.previous
+			cursor w-resize
 			left 0
-		img.center
-			align(horizontal)
-		img.right
+		.flickity-prev-next-button.next
+			cursor e-resize
 			right 0
-	.slide.active ~ .slide
-		visibility hidden

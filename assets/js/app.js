@@ -1,6 +1,7 @@
 /* globals $:false */
 var width = $(window).width(),
     height = $(window).height(),
+    $slider,
     isMobile = false,
     $root = '/';
 $(function() {
@@ -136,8 +137,13 @@ $(function() {
                         $stockists.removeClass('visible');
                         $contact.removeClass('visible');
                     }
+
                 },
-                // afterLoad: function(anchorLink, index) {},
+                afterLoad: function(anchorLink, index) {
+                  if (index == 3) {
+                    $slider.flickity('playPlayer');
+                  }
+                },
                 // afterRender: function() {},
                 // afterResize: function() {},
                 // afterResponsive: function(isResponsive) {},
@@ -156,15 +162,16 @@ $(function() {
                 cellSelector: '.slide',
                 imagesLoaded: false,
                 lazyLoad: false,
-                setGallerySize: true,
-                autoPlay: 3000,
+                setGallerySize: false,
+                autoPlay: 1000,
                 pauseAutoPlayOnHover: false,
                 accessibility: true,
                 wrapAround: true,
-                prevNextButtons: false,
+                prevNextButtons: true,
                 pageDots: false,
                 draggable: true
             });
+            $slider.flickity('stopPlayer');
             flkty = $slider.data('flickity');
             $slider.on('staticClick.flickity', function(event, pointer, cellElement, cellIndex) {
                 if (!cellElement) {
