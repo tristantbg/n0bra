@@ -1,0 +1,401 @@
+@import 'nib'
+@import '../../node_modules/jeet/stylus/jeet/*'
+@import '_mixins.styl'
+
+// Media queries
+$xl = 1600px
+$lg = 1260px
+$md = 1023px
+$sm = 767px
+
+// Colors
+$primary ?= #000
+$secondary ?= #fff
+$red ?= #ff0000
+$blue ?= blue
+
+// Metrics
+$padding = 3rem
+$kinetic = cubic-bezier(0.77, 0, 0.175, 1)
+
+// CSS Reset
+global-reset()
+
+webfont('U', 'U', true, 'normal')
+
+body,html
+	width 100%
+	-webkit-text-size-adjust 100%
+	background $primary
+
+html
+	font-size 62.5%
+
+body
+	font-family 'U', Helvetica Neue, Arial, sans-serif
+	font-size 1rem
+	text-rendering optimizeLegibility
+	font-smoothing()
+	color $secondary
+
+p
+	margin-bottom 1em
+	line-height 100%
+
+p:last-child
+	margin-bottom 0
+
+::selection
+	background $secondary
+	
+::-moz-selection
+	background $secondary
+
+*
+	hideselect()
+	box-sizing(border-box)
+
+a, a:hover, a:visited, a:focus
+	color inherit
+	text-decoration none
+	cursor pointer
+
+.lazyimg
+	hideselect()
+	transition(opacity 400ms ease)
+	opacity 0
+
+.lazyimg.lazyloaded, .lazyimg.flickity-lazyloaded
+	opacity 1
+
+[event-target]
+	cursor pointer
+
+#outdated
+	display none
+	text-align center
+	position fixed
+	width 100%
+	height 100%
+	top 0
+	left 0
+	background $primary
+	z-index 900
+	a
+		border-bottom 1px solid
+	.inner
+		padding 8rem 20%
+
+.no-js, .no-svg, .no-flexbox
+	#outdated
+		display block
+
+// @keyframes color {
+//     100%, 0% {
+//         stroke: #40382e
+//     }
+//     40% {
+//         stroke: #0f0f0f
+//     }
+//     66% {
+//         stroke: #40382e
+//     }
+//     80%, 90% {
+//         stroke: #0f0f0f
+//     }
+// }
+
+@keyframes rotate {
+    100% {
+        transform(rotate(360deg))
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0
+    }
+    30% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px
+    }
+    100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px
+    }
+}
+
+.loader
+	position fixed
+	width 100%
+	height 100%
+	top 0
+	left 0
+	//background $primary url('../../images/loader.gif') center no-repeat
+	background $primary
+	background-size 15px
+	z-index 10000
+	.spinner
+		width 50px
+		height 50px
+		align()
+		.circular
+			animation rotate 2s linear infinite
+			height 100%
+			transform-origin center center
+			width 100%
+			position absolute
+			top 0
+			bottom 0
+			left 0
+			right 0
+			margin auto
+			.path
+				stroke $secondary
+				stroke-dasharray 1, 200
+				stroke-dashoffset 0
+				animation dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite
+
+#landing
+	transition opacity 700ms ease, visibility 700ms ease
+	position fixed
+	width 100%
+	height 100%
+	top 0
+	left 0
+	background $primary
+	z-index 9000
+	img
+		width 40%
+		align()
+
+#landing.negative
+	vendor(filter, invert(1))
+
+#landing.hidden
+	opacity 0
+	visibility hidden
+
+header
+	text-align center
+	position fixed
+	width 100%
+	top 0
+	left 0
+	mix-blend-mode difference
+	z-index 1000
+	#site-title
+		width 9rem
+		padding 1rem
+		display inline-block
+
+#wrapper
+	section
+		height 100vh
+		overflow hidden
+
+.menu-dot
+	transition(transform 800ms $kinetic)
+	cursor pointer
+	position fixed
+	bottom $padding
+	width 5rem
+	height 5rem
+	z-index 300
+	svg
+		width 100%
+		height 100%
+
+.menu-dot.left
+	transform(translateX(-200%) translateZ(0))
+	left $padding
+	svg, circle, line
+		stroke $red
+	line
+		display none
+	:hover
+		svg, circle
+			fill $red
+
+.menu-dot.right
+	transform(translateX(200%) translateZ(0))
+	right $padding
+	svg, circle, line
+		stroke $blue
+	line
+		display none
+	:hover
+		svg, circle
+			fill $blue
+
+.menu-dot.visible
+	transform(translateX(0%) translateZ(0))
+
+.menu-dot.active
+	circle
+		display none
+	line
+		display block
+
+#contributors::-webkit-scrollbar, #stockists::-webkit-scrollbar
+	display none
+	
+#contributors
+	transition(transform 500ms $kinetic)
+	transform(translateY(100%) translateZ(0))
+	position fixed
+	top 0
+	left 0
+	width 100%
+	height 100%
+	padding $padding
+	overflow-y scroll
+	text-align center
+	color $red
+	font-size 6vw
+	mix-blend-mode difference
+	z-index 200
+
+#stockists
+	transition(transform 500ms $kinetic)
+	transform(translateX(100%) translateZ(0))
+	position fixed
+	top 0
+	right 0
+	width 50%
+	height 100%
+	text-align center
+	z-index 200
+	overflow-y scroll
+	padding $padding
+	font-size 3vw
+
+#buy
+	transition(transform 500ms $kinetic)
+	transform(translateX(-100%) translateZ(0))
+	position fixed
+	top 0
+	left 0
+	width 50%
+	height 100%
+	font-size 8vw
+	color $blue
+	text-align center
+	mix-blend-mode difference
+	z-index 200
+	.inner
+		align()
+		padding $padding
+
+#filter-overlay
+	transition(transform 500ms $kinetic)
+	transform(translateX(100%) translateZ(0))
+	position fixed
+	top 0
+	right 0
+	width 50%
+	height 100%
+	mix-blend-mode multiply
+	background $blue
+	z-index 190
+
+#contact
+	transition(transform 500ms $kinetic)
+	transform(translateY(-100%) translateZ(0))
+	position fixed
+	top 0
+	left 0
+	width 100%
+	padding 8rem $padding $padding
+	background $secondary
+	color $primary
+	text-align center
+	font-size 2rem
+	z-index 210
+
+#contributors.visible, #stockists.visible, #contact.visible, #buy.visible, #filter-overlay.visible
+	transform(translateZ(0))
+		
+#manifesto
+	position relative
+	.inner
+		width 100%
+		align()
+		text-align center
+		font-size 2.35vmax
+		padding 8rem
+
+@keyframes vortex {
+	0% { 
+	transform(rotateZ(0deg) rotateY(0deg))
+	}
+	100% { 
+	transform(rotateZ(0deg) rotateY(360deg))
+	}
+}
+
+#issue
+	position relative
+	.inner
+		align()
+		width 40vh
+		.issue-stage
+			vendor(perspective, 1000px)
+			perspective-origin 50% 50%
+			.issue-model
+				transform-origin center
+				transition(transform 500ms $kinetic)
+				//animation vortex 10s linear infinite
+				vendor(transform-style, preserve-3d)
+				vendor(backface-visibility, hidden)
+				.frontpage, .backpage
+					vendor(backface-visibility, hidden)
+					vendor(transform-style, flat)
+				.sizer
+					opacity 0
+				.frontpage
+					position absolute
+					top 0
+					left 0
+					//transform(translate3d(0px, 0px, 8px))
+				.backpage
+					position absolute
+					top 0
+					left 0
+					transform(rotateY(180deg) translate3d(0px, 0px, 1px))
+		:hover
+			.issue-model
+				transform(rotateZ(0deg) rotateY(180deg))
+
+#overview
+	.fp-controlArrow
+		top 0
+		height 100%
+		width 50%
+		margin-top 0
+		border none
+	.fp-controlArrow.fp-prev
+		cursor w-resize
+		left 0
+	.fp-controlArrow.fp-next
+		cursor e-resize
+		right 0
+	.fp-slidesContainer
+		width 100% !important
+		transform(none !important)
+	.slide
+		width 100% !important
+		img
+			position absolute
+			top 0
+			height 100%
+			width auto
+		img.left
+			left 0
+		img.center
+			align(horizontal)
+		img.right
+			right 0
+	.slide.active ~ .slide
+		visibility hidden
