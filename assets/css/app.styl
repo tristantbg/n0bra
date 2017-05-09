@@ -203,6 +203,9 @@ header
 	width 5rem
 	height 5rem
 	z-index 300
+	+below($md)
+		width 3.5rem
+		height 3.5rem
 	svg
 		width 100%
 		height 100%
@@ -256,6 +259,9 @@ header
 	font-size 6vw
 	mix-blend-mode difference
 	z-index 200
+	+below($md)
+		font-size 8vw
+		padding 5rem 2rem 8rem
 
 #stockists
 	transition(transform 500ms $kinetic)
@@ -270,6 +276,10 @@ header
 	overflow-y scroll
 	padding $padding
 	font-size 3vw
+	+below($md)
+		width 100%
+		font-size 8vw
+		padding 5rem 2rem 8rem
 
 #buy
 	transition(transform 500ms $kinetic)
@@ -284,9 +294,15 @@ header
 	text-align center
 	mix-blend-mode difference
 	z-index 200
+	+below($md)
+		display none
 	.inner
 		align()
 		padding $padding
+
+#buy-mobile
+	+above($md + 1)
+		display none
 
 #filter-overlay
 	transition(transform 500ms $kinetic)
@@ -299,6 +315,8 @@ header
 	mix-blend-mode multiply
 	background $blue
 	z-index 190
+	+below($md)
+		width 100%
 
 #contact
 	transition(transform 500ms $kinetic)
@@ -313,6 +331,8 @@ header
 	text-align center
 	font-size 2rem
 	z-index 210
+	+below($md)
+		font-size 2vmax
 
 #contributors.visible, #stockists.visible, #contact.visible, #buy.visible, #filter-overlay.visible
 	transform(translateZ(0))
@@ -325,6 +345,9 @@ header
 		text-align center
 		font-size 2.35vmax
 		padding 8rem
+		+below($md)
+			font-size 2.5vmax
+			padding 2rem
 
 @keyframes vortex {
 	0% { 
@@ -349,7 +372,9 @@ header
 				//animation vortex 10s linear infinite
 				vendor(transform-style, preserve-3d)
 				vendor(backface-visibility, hidden)
+				will-change transform
 				.frontpage, .backpage
+					will-change transform
 					vendor(backface-visibility, hidden)
 					vendor(transform-style, flat)
 				.sizer
@@ -389,12 +414,19 @@ header
 				top 0
 				height 100%
 				width auto
+				+below($md)
+					height 100%
+					width 100%
+					object-fit contain
 			img.left
-				left 0
+				+above($md + 1)
+					left 0
 			img.center
-				align(horizontal)
+				+above($md + 1)
+					align(horizontal)
 			img.right
-				right 0
+				+above($md + 1)
+					right 0
 		.slide.is-selected ~ .slide
 			opacity 0
 			z-index 0

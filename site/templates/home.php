@@ -16,9 +16,11 @@
 					<div class="frontpage">
 						<img src="<?= thumb($page->issuefront()->toFile(), array('width' => 500))->url() ?>" width="100%">
 					</div>
+					<?php if($page->issueback()->isNotEmpty()): ?>
 					<div class="backpage">
 						<img src="<?= thumb($page->issueback()->toFile(), array('width' => 500))->url() ?>" width="100%">
 					</div>
+					<?php endif ?>
 				</div>
 			</div>
 		</div>
@@ -52,13 +54,27 @@
 	<?= $page->contributors()->kt() ?>
 </div>
 
+<?php if($page->buylink()->isNotEmpty()): ?>
 <div id="buy">
 	<a href="<?= $page->buylink()->html() ?>" target="_blank" rel="nofollow">
 		<div class="inner">to<br>buy<br>online<br>click<br>here</div>
 	</a>
 </div>
+<?php endif ?>
+
 <div id="filter-overlay"></div>
-<div id="stockists"><?= $page->stockists()->kt() ?></div>
+<div id="stockists">
+<?= $page->stockists()->kt() ?>
+<?php if($page->buylink()->isNotEmpty()): ?>
+<div id="buy-mobile">
+	<br>
+	<a href="<?= $page->buylink()->html() ?>" target="_blank" rel="nofollow">
+		to buy online
+		<br>click here
+	</a>
+</div>
+<?php endif ?>
+</div>
 <div id="contact">
 <?= $page->contact()->kt() ?>
 <p>© <?= date('Y') ?>, All rights reserved <?= $site->title()->html() ?>
