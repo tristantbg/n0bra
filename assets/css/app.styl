@@ -11,8 +11,8 @@ $sm = 767px
 // Colors
 $primary ?= #000
 $secondary ?= #fff
-$red ?= #ff0000
-$blue ?= blue
+$red ?= #e63911
+$blue ?= #006fb1
 
 // Metrics
 $padding = 3rem
@@ -90,39 +90,22 @@ a, a:hover, a:visited, a:focus
 	#outdated
 		display block
 
-// @keyframes color {
-//     100%, 0% {
-//         stroke: #40382e
-//     }
-//     40% {
-//         stroke: #0f0f0f
-//     }
-//     66% {
-//         stroke: #40382e
-//     }
-//     80%, 90% {
-//         stroke: #0f0f0f
-//     }
-// }
-
-@keyframes rotate {
-    100% {
-        transform(rotate(360deg))
-    }
-}
-
-@keyframes dash {
+@keyframes pulse {
     0% {
-        stroke-dasharray: 1, 200;
-        stroke-dashoffset: 0
+        //transform(scale(0.5))
+        fill $red
     }
-    30% {
-        stroke-dasharray: 89, 200;
-        stroke-dashoffset: -35px
+    50% {
+        //transform(scale(0.5))
+        fill $red
+    }
+    50.001% {
+        //transform(scale(1))
+        fill $blue
     }
     100% {
-        stroke-dasharray: 89, 200;
-        stroke-dashoffset: -124px
+        //transform(scale(1))
+        fill $blue
     }
 }
 
@@ -141,7 +124,6 @@ a, a:hover, a:visited, a:focus
 		height 50px
 		align()
 		.circular
-			animation rotate 2s linear infinite
 			height 100%
 			transform-origin center center
 			width 100%
@@ -152,10 +134,11 @@ a, a:hover, a:visited, a:focus
 			right 0
 			margin auto
 			.path
-				stroke $secondary
-				stroke-dasharray 1, 200
-				stroke-dashoffset 0
-				animation dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite
+				animation pulse .5s ease-in-out infinite alternate
+				stroke $red
+				fill $red
+				// stroke-dasharray 1, 200
+				// stroke-dashoffset 0			
 
 #landing
 	transition opacity 700ms ease, visibility 700ms ease
@@ -252,8 +235,9 @@ header
 	left 0
 	width 100%
 	height 100%
-	padding $padding
+	padding ($padding+1) $padding
 	overflow-y scroll
+	-webkit-overflow-scrolling touch
 	text-align center
 	color $red
 	font-size 6vw
@@ -274,6 +258,7 @@ header
 	text-align center
 	z-index 200
 	overflow-y scroll
+	-webkit-overflow-scrolling touch
 	padding $padding
 	font-size 3vw
 	+below($md)
@@ -362,7 +347,8 @@ header
 	position relative
 	.inner
 		align()
-		width 40vh
+		width 50vh
+		max-width 800px
 		.issue-stage
 			vendor(perspective, 1000px)
 			perspective-origin 50% 50%

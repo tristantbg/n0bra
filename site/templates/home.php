@@ -11,14 +11,14 @@
 			<div class="issue-stage">
 				<div class="issue-model">
 					<div class="sizer">
-						<img src="<?= thumb($page->issuefront()->toFile(), array('width' => 500))->url() ?>" width="100%">
+						<img src="<?= thumb($page->issuefront()->toFile(), array('width' => 800))->url() ?>" width="100%">
 					</div>
 					<div class="frontpage">
-						<img src="<?= thumb($page->issuefront()->toFile(), array('width' => 500))->url() ?>" width="100%">
+						<img src="<?= thumb($page->issuefront()->toFile(), array('width' => 800))->url() ?>" width="100%">
 					</div>
 					<?php if($page->issueback()->isNotEmpty()): ?>
 					<div class="backpage">
-						<img src="<?= thumb($page->issueback()->toFile(), array('width' => 500))->url() ?>" width="100%">
+						<img src="<?= thumb($page->issueback()->toFile(), array('width' => 800))->url() ?>" width="100%">
 					</div>
 					<?php endif ?>
 				</div>
@@ -35,7 +35,7 @@
 		<div class="slide">
 			<img 
 			src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
-			data-src="<?= resizeOnDemand($image, 1000) ?>" 
+			data-src="<?= resizeOnDemand($image, 1500) ?>" 
 			data-srcset="<?= $srcset ?>" 
 			data-sizes="auto" 
 			data-optimumx="1.5" 

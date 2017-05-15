@@ -76,11 +76,11 @@
 </div>
 
 <div class="loader">
-	<div class="spinner">
+	<!-- <div class="spinner">
 		<svg class="circular" viewBox="25 25 50 50">
-		<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="1" stroke-miterlimit="10"></circle>
+		<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="0" stroke-miterlimit="10"></circle>
 		</svg>
-	</div>
+	</div> -->
 </div>
 
 <div id="landing" class="negative">
