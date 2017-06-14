@@ -55,9 +55,9 @@ $(function() {
                     });
                 });
                 $('[event-target="landing"]').hover(function() {
-                    $landing.removeClass('negative');
-                }, function() {
                     $landing.addClass('negative');
+                }, function() {
+                    $landing.removeClass('negative');
                 });
                 $body.on('click', '#contact', function(event) {
                     if ($(event.target).is('a')) {
@@ -107,7 +107,7 @@ $(function() {
                 offsetSections: false,
                 resetSliders: false,
                 fadingEffect: false,
-                normalScrollElements: '#contributors, #stockists, #buy',
+                normalScrollElements: '#landing, #contributors, #stockists, #buy',
                 scrollOverflow: false,
                 scrollOverflowReset: false,
                 scrollOverflowOptions: null,

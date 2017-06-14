@@ -83,7 +83,7 @@
 	</div> -->
 </div>
 
-<div id="landing" class="negative">
+<div id="landing">
 	<img src="<?= url('assets/images/nobra_logo.svg') ?>" onerror="this.src='<?= url('assets/images/nobra_logo.png') ?>'; this.onerror=null;" alt="Nobra" width="100%" height="auto" event-target="landing">
 </div>
 

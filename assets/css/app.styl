@@ -109,6 +109,27 @@ a, a:hover, a:visited, a:focus
     }
 }
 
+@keyframes flash {
+    0% {
+        vendor(filter, invert(1))
+    }
+    25% {
+        vendor(filter, invert(1))
+    }
+    25.001% {
+        vendor(filter, invert(0))
+    }
+    50% {
+        vendor(filter, invert(0))
+    }
+    50.001% {
+        vendor(filter, invert(1))
+    }
+    100% {
+        vendor(filter, invert(1))
+    }
+}
+
 .loader
 	position fixed
 	width 100%
@@ -147,14 +168,15 @@ a, a:hover, a:visited, a:focus
 	height 100%
 	top 0
 	left 0
-	background $primary
+	background $secondary
 	z-index 9000
 	img
 		width 40%
+		vendor(filter, invert(1))
 		align()
 
 #landing.negative
-	vendor(filter, invert(1))
+	animation flash .6s forwards
 
 #landing.hidden
 	opacity 0
