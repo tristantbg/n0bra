@@ -107,7 +107,7 @@ $(function() {
                 offsetSections: false,
                 resetSliders: false,
                 fadingEffect: false,
-                normalScrollElements: '#landing, #contributors, #stockists, #buy',
+                normalScrollElements: '#contributors, #stockists, #buy',
                 scrollOverflow: false,
                 scrollOverflowReset: false,
                 scrollOverflowOptions: null,
