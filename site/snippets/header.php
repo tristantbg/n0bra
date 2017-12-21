@@ -84,12 +84,12 @@
 </div>
 
 <div id="landing">
-	<img src="<?= url('assets/images/nobra_logo.svg') ?>" onerror="this.src='<?= url('assets/images/nobra_logo.png') ?>'; this.onerror=null;" alt="Nobra" width="100%" height="auto" event-target="landing">
+	<img src="<?= url('assets/images/carcy_logo.svg') ?>" onerror="this.src='<?= url('assets/images/carcy_logo.png') ?>'; this.onerror=null;" alt="Nobra" width="100%" height="auto" event-target="landing">
 </div>
 
 <header>
 	<div id="site-title" event-target="contact">
-		<img src="<?= url('assets/images/nobra_logo.svg') ?>" onerror="this.src='<?= url('assets/images/nobra_logo.png') ?>'; this.onerror=null;" alt="Nobra" width="100%" height="auto">
+		<img src="<?= url('assets/images/carcy_logo.svg') ?>" onerror="this.src='<?= url('assets/images/carcy_logo.png') ?>'; this.onerror=null;" alt="Nobra" width="100%" height="auto">
 	</div>
 </header>
 
