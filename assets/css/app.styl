@@ -1,5 +1,5 @@
 @import 'nib'
-@import '../../node_modules/jeet/stylus/jeet/*'
+@import '../../node_modules/jeet/jeet.styl'
 @import '_mixins.styl'
 
 // Media queries
@@ -47,7 +47,7 @@ p:last-child
 
 ::selection
 	background $secondary
-	
+
 ::-moz-selection
 	background $secondary
 
@@ -91,43 +91,43 @@ a, a:hover, a:visited, a:focus
 		display block
 
 @keyframes pulse {
-    0% {
-        //transform(scale(0.5))
-        fill $red
-    }
-    50% {
-        //transform(scale(0.5))
-        fill $red
-    }
-    50.001% {
-        //transform(scale(1))
-        fill $blue
-    }
-    100% {
-        //transform(scale(1))
-        fill $blue
-    }
+		0% {
+				//transform(scale(0.5))
+				fill $red
+		}
+		50% {
+				//transform(scale(0.5))
+				fill $red
+		}
+		50.001% {
+				//transform(scale(1))
+				fill $blue
+		}
+		100% {
+				//transform(scale(1))
+				fill $blue
+		}
 }
 
 @keyframes flash {
-    0% {
-        vendor(filter, invert(1))
-    }
-    25% {
-        vendor(filter, invert(1))
-    }
-    25.001% {
-        vendor(filter, invert(0))
-    }
-    50% {
-        vendor(filter, invert(0))
-    }
-    50.001% {
-        vendor(filter, invert(1))
-    }
-    100% {
-        vendor(filter, invert(1))
-    }
+		0% {
+				vendor(filter, invert(1))
+		}
+		25% {
+				vendor(filter, invert(1))
+		}
+		25.001% {
+				vendor(filter, invert(0))
+		}
+		50% {
+				vendor(filter, invert(0))
+		}
+		50.001% {
+				vendor(filter, invert(1))
+		}
+		100% {
+				vendor(filter, invert(1))
+		}
 }
 
 .loader
@@ -159,7 +159,7 @@ a, a:hover, a:visited, a:focus
 				stroke $red
 				fill $red
 				// stroke-dasharray 1, 200
-				// stroke-dashoffset 0			
+				// stroke-dashoffset 0
 
 #landing
 	transition opacity 700ms ease, visibility 700ms ease
@@ -250,7 +250,7 @@ header
 
 #contributors::-webkit-scrollbar, #stockists::-webkit-scrollbar
 	display none
-	
+
 #contributors
 	transition(transform 500ms $kinetic)
 	transform(translateY(100%) translateZ(0))
@@ -345,7 +345,7 @@ header
 
 #contributors.visible, #stockists.visible, #contact.visible, #buy.visible, #filter-overlay.visible
 	transform(translateZ(0))
-		
+
 #manifesto
 	position relative
 	.inner
@@ -359,10 +359,10 @@ header
 			padding 2rem
 
 @keyframes vortex {
-	0% { 
+	0% {
 	transform(rotateZ(0deg) rotateY(0deg))
 	}
-	100% { 
+	100% {
 	transform(rotateZ(0deg) rotateY(360deg))
 	}
 }
@@ -402,6 +402,45 @@ header
 		:hover
 			.issue-model
 				transform(rotateZ(0deg) rotateY(180deg))
+
+#issue-2
+	position relative
+	cursor crosshair
+	&:not(:hover)
+		.front::after
+			display none
+	.front, .back
+		position absolute
+		top 0
+		left 0
+		width 100%
+		height calc(100% + 2px)
+		overflow hidden
+		.inner
+			height 100vh
+			display flex
+			justify-content space-around
+			align-items center
+		img
+			width 50vh
+			max-width 800px
+			margin ($padding/2)
+			&:nth-child(2)
+				+below($md)
+					display none
+	.front
+		z-index 2
+		&::after
+			content ''
+			position absolute
+			left 0
+			bottom 0
+			width 100%
+			height 2px
+			background #fff
+			mix-blend-mode difference
+	.back
+		z-index 1
 
 #overview
 	#overview-slider

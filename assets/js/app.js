@@ -65,7 +65,9 @@ $(function() {
                     }
                     $contact.removeClass('visible');
                 });
-
+                $('#issue-2').mousemove(function(e) {
+                    $('#issue-2 .front').height(e.clientY);
+                });
                 app.fullPager();
                 $(window).load(function() {
                     $(".loader").fadeOut("fast");

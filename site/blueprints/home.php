@@ -25,6 +25,14 @@ fields:
     label: Issue Back
     type: image
     width: 1/2
+  issuefront2:
+    label: Issue Front 2
+    type: image
+    width: 1/2
+  issueback2:
+    label: Issue Back 2
+    type: image
+    width: 1/2
   gallery:
     label: Image Gallery
     type: gallery

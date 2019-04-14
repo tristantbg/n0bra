@@ -6,25 +6,42 @@
 			<?= $page->text()->kt() ?>
 		</div>
 	</section>
-	<section id="issue">
-		<div class="inner">
-			<div class="issue-stage">
-				<div class="issue-model">
-					<div class="sizer">
-						<img src="<?= thumb($page->issuefront()->toFile(), array('width' => 800))->url() ?>" width="100%">
-					</div>
-					<div class="frontpage">
-						<img src="<?= thumb($page->issuefront()->toFile(), array('width' => 800))->url() ?>" width="100%">
-					</div>
-					<?php if($page->issueback()->isNotEmpty()): ?>
-					<div class="backpage">
-						<img src="<?= thumb($page->issueback()->toFile(), array('width' => 800))->url() ?>" width="100%">
-					</div>
-					<?php endif ?>
-				</div>
-			</div>
-		</div>
-	</section>
+  <?php if ($page->issuefront()->toFile() && $page->issueback()->toFile() && $page->issuefront2()->toFile() && $page->issueback2()->toFile()): ?>
+    <section id="issue-2">
+      <div class="front">
+          <div class="inner">
+            <img src="<?= thumb($page->issuefront()->toFile(), array('width' => 800))->url() ?>" width="100%">
+            <img src="<?= thumb($page->issuefront2()->toFile(), array('width' => 800))->url() ?>" width="100%">
+          </div>
+      </div>
+      <div class="back">
+          <div class="inner">
+            <img src="<?= thumb($page->issueback()->toFile(), array('width' => 800))->url() ?>" width="100%">
+            <img src="<?= thumb($page->issueback2()->toFile(), array('width' => 800))->url() ?>" width="100%">
+          </div>
+      </div>
+    </section>
+  <?php else: ?>
+  	<section id="issue">
+  		<div class="inner">
+  			<div class="issue-stage">
+  				<div class="issue-model">
+  					<div class="sizer">
+  						<img src="<?= thumb($page->issuefront()->toFile(), array('width' => 800))->url() ?>" width="100%">
+  					</div>
+  					<div class="frontpage">
+  						<img src="<?= thumb($page->issuefront()->toFile(), array('width' => 800))->url() ?>" width="100%">
+  					</div>
+  					<?php if($page->issueback()->isNotEmpty()): ?>
+  					<div class="backpage">
+  						<img src="<?= thumb($page->issueback()->toFile(), array('width' => 800))->url() ?>" width="100%">
+  					</div>
+  					<?php endif ?>
+  				</div>
+  			</div>
+  		</div>
+  	</section>
+  <?php endif ?>
 	<section id="overview">
 		<div id="overview-slider">
 		<?php foreach ($page->gallery()->toStructure() as $key => $image): ?>
@@ -33,13 +50,13 @@
 			  for ($i = 500; $i <= 2000; $i += 500) $srcset .= resizeOnDemand($image, $i) . ' ' . $i . 'w,';
 		?>
 		<div class="slide">
-			<img 
-			src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
-			data-src="<?= resizeOnDemand($image, 1500) ?>" 
-			data-srcset="<?= $srcset ?>" 
-			data-sizes="auto" 
-			data-optimumx="1.5" 
-			class="lazyimg lazyload lazypreload <?= $image->imageposition() ?>" 
+			<img
+			src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+			data-src="<?= resizeOnDemand($image, 1500) ?>"
+			data-srcset="<?= $srcset ?>"
+			data-sizes="auto"
+			data-optimumx="1.5"
+			class="lazyimg lazyload lazypreload <?= $image->imageposition() ?>"
 			height="100%" width="auto">
 			<noscript>
 				<img src="<?= resizeOnDemand($image, 1500) ?>" height="100%" width="auto" />
