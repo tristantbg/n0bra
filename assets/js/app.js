@@ -100,7 +100,7 @@ $(function() {
             function handleOrientation(event) {
                 var y = event.beta; // In degree in the range [-90,90]
                 //value on gama is [-90, 90] => but we want to have between [0, 180], to be possiblle to compute 100% of 180
-                y += 20;
+                y -= 15;
                 var percent = precentageIn180(y);
                 // console.log(y, percent)
                 $front.height(percent + "%");
