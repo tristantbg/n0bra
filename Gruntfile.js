@@ -2,7 +2,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         concat: {
             plugins: {
-                src: ['site/plugins/oembed/assets/js/oembed.js', 'node_modules/flickity/dist/flickity.pkgd.min.js', 'node_modules/lazysizes/lazysizes.min.js', 'node_modules/lazysizes/plugins/optimumx/ls.optimumx.min.js', 'node_modules/fullpage.js/dist/jquery.fullpage.js'],
+                src: ['site/plugins/oembed/assets/js/oembed.js', 'node_modules/flickity/dist/flickity.pkgd.min.js', 'node_modules/lazysizes/lazysizes.min.js', 'node_modules/lazysizes/plugins/optimumx/ls.optimumx.min.js', 'node_modules/fullpage.js/dist/jquery.fullpage.js', 'node_modules/viewport-units-buggyfill/viewport-units-buggyfill.js'],
                 dest: 'assets/js/plugins.concat.js'
             },
             js: {

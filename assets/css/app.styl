@@ -406,9 +406,10 @@ header
 #issue-2
 	position relative
 	cursor crosshair
-	&:not(:hover)
-		.front::after
-			display none
+	+above($md + 1)
+		&:not(:hover)
+			.front::after
+				display none
 	.front, .back
 		position absolute
 		top 0
@@ -425,6 +426,8 @@ header
 			width 50vh
 			max-width 800px
 			margin ($padding/2)
+			+below($md)
+				max-width 'calc(100% - %s)' % ($padding*2)
 			&:nth-child(2)
 				+below($md)
 					display none

@@ -1,4 +1,5 @@
 /* globals $:false */
+window.viewportUnitsBuggyfill.init();
 var width = $(window).width(),
     height = $(window).height(),
     $slider,
@@ -65,9 +66,7 @@ $(function() {
                     }
                     $contact.removeClass('visible');
                 });
-                $('#issue-2').mousemove(function(e) {
-                    $('#issue-2 .front').height(e.clientY);
-                });
+                app.issue2()
                 app.fullPager();
                 $(window).load(function() {
                     $(".loader").fadeOut("fast");
@@ -84,6 +83,29 @@ $(function() {
                     isMobile = false;
                 }
             }
+        },
+        issue2: function() {
+            var $front = $('#issue-2 .front');
+            if (!$front) return;
+
+            $('#issue-2').mousemove(function(e) {
+                $front.height(e.clientY);
+            });
+
+            function precentageIn180(value) {
+                var percent = ((value * 100) / 40).toFixed(0);
+                return percent;
+            }
+
+            function handleOrientation(event) {
+                var y = event.beta; // In degree in the range [-90,90]
+                //value on gama is [-90, 90] => but we want to have between [0, 180], to be possiblle to compute 100% of 180
+                y += 20;
+                var percent = precentageIn180(y);
+                // console.log(y, percent)
+                $front.height(percent + "%");
+            }
+            window.addEventListener('deviceorientation', handleOrientation);
         },
         fullPager: function() {
             $('#wrapper').fullpage({
@@ -139,12 +161,11 @@ $(function() {
                         $stockists.removeClass('visible');
                         $contact.removeClass('visible');
                     }
-
                 },
                 afterLoad: function(anchorLink, index) {
-                  if (index == 3) {
-                    $slider.flickity('playPlayer');
-                  }
+                    if (index == 3) {
+                        $slider.flickity('playPlayer');
+                    }
                 },
                 // afterRender: function() {},
                 // afterResize: function() {},
@@ -156,9 +177,7 @@ $(function() {
                 // onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex) {}
             });
             app.loadSlider();
-
         },
-
         loadSlider: function() {
             $slider = $('#overview-slider').flickity({
                 cellSelector: '.slide',
